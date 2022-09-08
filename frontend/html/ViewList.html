@@ -1,0 +1,129 @@
+<div class="container-lg">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2>Account <b>List</b></h2><br>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="text" onkeyup="handKeyUpEventForSearching(event)" name="" id="input_search" placeholder="Search...">
+                        <button onclick="searchItem()">Search</button>
+                    </div>
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-info add-new" onclick="refresh()"><i class="fa fa-refresh"></i> Refresh</button><br><br>
+                        <button type="button" class="btn btn-info add-new" onclick="openAddModal()"><i class="fa fa-plus"></i> Add New</button><br><br>
+                        <button type="button" class="btn btn-info add-new" onclick="deleteAllAccount()"><i class="fa fa-minus"></i> Delete All</button>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <!-- <th width="50px">ID <i class="fa fa-fw fa-sort"></i></th> -->
+                        <th width="40px"><input type="checkbox" id="checkbox-all" name="checkbox-all" onclick="onChangeCheckboxAll()"></th>
+                        <th>UserName <i class="fa fa-fw" id="heading-userName" onclick="changeSort('userName')"></i></th>
+                        <th>FullName <i class="fa fa-fw" id="heading-fullName" onclick="changeSort('fullName')"></i></th>
+                        <th>Email <i class="fa fa-fw" id="heading-email" onclick="changeSort('email')"></i></th>
+                        <th>Department <i class="fa fa-fw" id="heading-department" onclick="changeSort('department')"></i></th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>John Doe</td>
+                        <td>Administration</td>
+                        <td>(171) 555-2222</td>
+                        <td>
+                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr> -->
+                    <!-- <tr>
+                        <td>Peter Parker</td>
+                        <td>Customer Service</td>
+                        <td>(313) 555-5735</td>
+                        <td>
+                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fran Wilson</td>
+                        <td>Human Resources</td>
+                        <td>(503) 555-9931</td>
+                        <td>
+                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination" id="pagination">
+                    <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="titleModal" class="modal-title">Add New Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="hideModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="container">
+                        <input type="hidden" id="txtId">
+
+                        <label for="txtUserName"><b>UserName</b><span class="required">(*)</span></label>
+                        <input type="text" placeholder="Enter UserName" name="txtUserName" id="txtUserName" required>
+
+                        <label for="txtFullName"><b>FullName</b><span class="required">(*)</span></label>
+                        <input type="text" placeholder="Enter FullName" name="txtFullName" id="txtFullName" required>
+
+                        <label for="txtEmail"><b>Email</b><span class="required">(*)</span></label>
+                        <input type="text" placeholder="Enter Email" name="txtEmail" id="txtEmail" required>
+
+                        <label for="txtDepartment"><b>Department</b><span class="required">(*)</span></label>
+                        <!-- <input type="text" placeholder="Enter Department" name="txtDepartment" id="txtDepartment" required> -->
+
+                        <select name="txtDepartment" id="txtDepartment">
+                            <option value="Phong Ky Thuat 1">Phong Ky Thuat 1</option>
+                            <option value="Phong Ky Thuat 2">Phong Ky Thuat 2</option>
+                            <option value="Phong Dev 1">Phong Dev 1</option>
+                            <option value="Phong Dev 2">Phong Dev 2</option>
+                            <option value="Phong Sale">Phong Sale</option>
+                            <option value="Phong Marketing">Phong Marketing</option>
+                            <option value="Phong Giam Doc">Phong Giam Doc</option>
+                            <option value="Phong Tai Chinh">Phong Tai Chinh</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="hideModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="save()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
